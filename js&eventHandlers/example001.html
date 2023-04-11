@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <!-- Set the viewport so this responsive site displays correctly on mobile devices -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>CS382 - Javascript and Event Handlers</title>
+    </head>
+
+    <body>
+        <h2>JavaScript Example: Calculate Area</h2>
+        <table>
+            <tr>
+                <th>Length: </th>
+                <td><input type='text' id='boxLength' placeholder='Enter length' value='0'></td>
+            </tr>
+            <tr>
+                <th>Width: </th>
+                <td><input type='text' id='boxWidth' placeholder='Enter width' value='0'></td>
+            </tr>
+        </table>
+        <p><button type='button' id='calcArea'>Calculate Area</button></p>
+
+        <p id='result'></p>
+        <script>
+            /*  This script  calculates and displays area and perimeter of a rectangle 
+                whenever the 'Calculate Area' button is pressed.
+            */
+
+            // Define an event listener
+            document.getElementById('calcArea').onclick = function(){
+                
+                // Step 1: declare block-level variables and assign values to variables
+                let boxLength = 0, boxWidth = 0;
+                let boxArea = 0, perimeter = 0;
+                
+                // Read 'length' of the box using the ID attribute of the text element
+                boxLength = document.getElementById('boxLength').value;
+                
+                // Read 'width' of the box using the ID attribute of the text element
+                boxWidth = document.getElementById('boxWidth').value;
+                
+                // Step 2. process data
+                // Calculate area
+                boxArea = boxLength*boxWidth;
+                
+                /*  Calculate the perimeter: 2(length + width)
+                    Note: By default, all the input values are read as string values. 
+                    In Javscript, the '+' operator is also used for string concatenation. Therefore, you need to convert 'string' values
+                    into numeric values before adding them.
+                    You may use the parseInt(), parseFloat(), or Number() method for converting strings to numeric values.
+                */
+                perimeter = 2*( Number(boxLength) + Number(boxWidth));
+                
+                // Step 3. Display output
+                // Display area using 'textContent' attribute of a selected HTML element
+                document.getElementById('result').textContent =   'Area of the rectangle is ' + boxArea + " and the perimeter is " + perimeter;
+            }
+        </script>
+    </body>
+</html>

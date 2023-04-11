@@ -1,0 +1,17 @@
+title {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+.dropdown-item {
+    text-align: center;
+}
+
+h3 {
+    background-color:gray; color:white; padding-left: 10px;
+}
+
+#footer {
+    text-align: center;
+}

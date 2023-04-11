@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>CS 382 - Javascript and HTTP Requests Using Promises - Example003</title>
+        <meta charset="utf-8">
+        <meta name="viewpoint" content="width=device-width, intial-scale=1, shrink-to-fit=no">
+        <!-- Include bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+            integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h5>Online Movie Store</h5>
+                    <p>Filter movies by genre:
+                        <select onchange="displayMovies()" id="genre">
+                            <option value="All" selected='selected'>All</option>
+                            <option value="Action">Action</option>
+                            <option value="Adventure">Adventure</option>
+                            <option value="Animation">Animation</option>
+                            <option value="Comedy">Comedy</option>
+                            <option value="Drama">Drama</option>
+                            <option value="Romance">Romance</option>
+                        </select>
+                    </p>
+                    <table class='table table-bordered'>
+                        <thead style="font-weight: bold">
+                            <tr>
+                                <th>Title</th>
+                                <th>Year</th>
+                                <th>Type</th
+                            </tr>
+                        </thead>
+                        <tbody id='movie-list'></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript">
+        /* Invoke the displayMovies() method to display a list of all the movies */
+        displayMovies()
+
+
+        function displayMovies() {
+            /* This method uses template literals and fat arrow method */
+            // Read selected genre
+            const genre = document.getElementById('genre').value;
+            /*  getData( ) method returns response using  Promise object. 
+                Note: Promise object promises to return a data set using HTTP request.
+                We use the then() method of the Promise object to read the response.
+                The then() method allows us to use the data set as soon as the responses is available.
+            */
+            getData(`http://localhost/CS382/js&HTTPRequestsUsingPromises/example003-helper.php?type=movies&genre=${genre}`).then(function(response) {
+                /*  Response is an encoded list of movies returned as a string.
+                    We fetched data from the database and read each row into an array using the server-side script.
+                        Then, we used the json_encode( ) method to convert the array into a string.
+                        We need to convert the string into a format we can use.
+                        Use the JSON.parse() method to convert the response into a JSON object.
+                    JSON object is basically a JavaScript object.
+                    We basically convert PHP associative arrays to JavaScript objects with the same keys (properties).
+                */
+                const apiResponse = JSON.parse(response)
+
+                /*  apiResponse is an array
+                    If the length of the array is greater than 0 then we have successfully obtained a valid response. */
+                if (apiResponse.length > 0) {
+                    /*  Display movie list
+                        We need to use the array of objects to create an appropriate  HTML structure.
+                        In this example, we use each object to create a table row so that we could use an 
+                        HTML table to display movie list.
+                    */
+                    const tRows = prepareHTMLContent(apiResponse);
+                    document.getElementById('movie-list').innerHTML = tRows;
+                }
+            });
+        }
+
+        function getData(url) {
+            /* If the url is defined then this method returns an instance of the Promise object. */
+            if(url) {
+                const task = new Promise(function(resolve, reject) {
+                    const req = new XMLHttpRequest();
+                    req.open('GET', url);
+                    req.send();
+                    req.onload = function() {
+                        req.status === 200 ? resolve(req.response) : reject(Error(req.statusText));
+                    }
+                    req.onerror = function(error) {
+                        reject(Error(`Network Error: ${error}`));
+                    }
+                });
+                return task;
+            }
+            return false;
+        }
+
+        function prepareHTMLContent(list) {
+            /* list is an array of objects. Properties are the same as the columns in the 
+                SQL statement: title, year, type.
+                Create a table row using each element.
+            */
+            let output = "";
+            for(let i in list ) {
+                const movie = list[i];
+                output += `<tr><td>${movie.title}</td><td>${movie.year}</td><td>${movie.type}</td></tr>`;
+            }
+
+            return output;
+        }
+    </script>
+</html>

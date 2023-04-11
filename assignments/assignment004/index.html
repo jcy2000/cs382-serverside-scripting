@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Highly Expensive Store v2.0</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+                integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="../css/css.css"
+    </head>
+    <body>
+        <div id="application">
+            <div id="header" class="text-center">
+                <h1>Highly Expensive Store</h1>
+            </div>
+            <hr style="background-color: gray; height:1.5em"/>
+            <div id="main">
+                <h2 class="text-center m-0">Purchase your expensive stuff with this handy form!</h2>
+                <p class="text-center m-0" style="font-size: 10px">Sadly, you know the price before it's too late. :(</p>
+                <div class="container">
+                    <form action="orderHandler.php" method="post">
+                        <div class="mb-3 border border-dark rounded">
+                            <h3 class="mb-3 p-1 ps-2 border rounded">Choose your parts</h4>
+                            <div id="comSpecs">
+                                <p class="text-center">The price of a standard computer (base system) is $800 which includes
+                                    the selected operating system, Intel core i5, 8 GB memory, and 1TB hard drive.</p>
+                                <div class="dropdown">
+                                    <h4 class="ps-4 pt-1">Operating System</h4>
+                                    <select name="specs[os]" class="ms-4 mb-3" style="width: 95%">
+                                        <option class="dropdown-item" selected disabled>--Select Operating System--</option>
+                                        <option class="dropdown-item" value="Linux,0">Linux</option>
+                                        <option class="dropdown-item" value="Windows,0">Windows</option>
+                                        <option class="dropdown-item" value="MacOS,0">MacOS</option>
+                                        <option class="dropdown-item" value="Unix,0">Unix</option>
+                                        <option class="dropdown-item" value="JokesOnU,0">JokesOnU</option>
+                                    </select>
+                                </div>
+
+                                <h4 class="ps-4 pt-1">Processor</h4>
+                                <div class="dropdown">
+                                    <select name="specs[processor]" class="ms-4 mb-3" style="width: 95%">
+                                        <option class="dropdown-item selected" value="Intel Core i5,0">Intel Core i5</option>
+                                        <option class="dropdown-item" value="Intel Core i7,300">Intel Core i7 (extra $300)</option>
+                                        <option class="dropdown-item" value="AMD Ryzen,400">AMD Ryzen (extra $400)</option>
+                                        <option class="dropdown-item" value="AMD Fallen,500">AMD Fallen (extra $500)</option>
+                                        <option class="dropdown-item" value="AMX-30,600">AMX-30 (extra $600)</option>
+                                    </select>
+                                </div>
+
+                                <h4 class="ps-4">Memory</h4>
+                                <div class="row ms-4 mb-3">
+                                    <div class="form-check col-2">
+                                        <input name="specs[memory]" class="form-check-input" value="128 GB,800" type="radio" name="radioButton" id="radioButton1">
+                                        <label class="form-check-label" for="radioButton1">
+                                            128 GB (extra $800)
+                                    </div>
+                                    <div class="form-check col-2">
+                                        <input name="specs[memory]" class="form-check-input" value="64 GB,400" type="radio" name="radioButton" id="radioButton2">
+                                        <label class="form-check-label" for="radioButton2">
+                                            64 GB (extra $400)
+                                    </div>
+                                    <div class="form-check col-2">
+                                        <input name="specs[memory]" class="form-check-input" value="32 GB,200" type="radio" name="radioButton" id="radioButton3">
+                                        <label class="form-check-label" for="radioButton3">
+                                            32 GB (extra $200)
+                                    </div>
+                                    <div class="form-check col-2">
+                                        <input name="specs[memory]" class="form-check-input" value="16 GB,100" type="radio" name="radioButton" id="radioButton4">
+                                        <label class="form-check-label" for="radioButton4">
+                                            16 GB (extra $100)
+                                    </div>
+                                    <div class="form-check col-2">
+                                        <input name="specs[memory]" class="form-check-input" value="8 GB,0" type="radio" name="radioButton" id="radioButton5" checked>
+                                        <label class="form-check-label" for="radioButton5">
+                                            8 GB (no extra charge)
+                                    </div>
+                                </div>
+
+                                <h4 class="ps-4">Extra Accessories</h4>
+                                <div class="row ms-4 mb-3" style="font-size:15px">
+                                    <div class="form-check col-2">
+                                        <input name="ea[Extra Battery]" class="form-check-input" value="69" type="checkbox" name="radioButton" id="radioButton1">
+                                        <label class="form-check-label" for="radioButton1">
+                                            Extra Battery (extra $69)
+                                    </div>
+                                    <div class="form-check col-1">
+                                        <input name="ea[Webcam]" class="form-check-input" value="79" type="checkbox" name="radioButton" id="radioButton2">
+                                        <label class="form-check-label" for="radioButton2">
+                                            Webcam (extra $79)
+                                    </div>
+                                    <div class="form-check col-2">
+                                        <input name="ea[Wireless Mouse]" class="form-check-input" value="49.99" type="checkbox" name="radioButton" id="radioButton3">
+                                        <label class="form-check-label" for="radioButton3">
+                                            Wireless mouse (extra $49.99)
+                                    </div>
+                                    <div class="form-check col-1">
+                                        <input name="ea[Headset]" class="form-check-input" value="69" type="checkbox" name="radioButton" id="radioButton4">
+                                        <label class="form-check-label" for="radioButton4">
+                                            Headset (extra $69)
+                                    </div>
+                                    <div class="form-check col-2">
+                                        <input name="ea[Presenter Clicker]" class="form-check-input" value="42.99" type="checkbox" name="radioButton" id="radioButton5">
+                                        <label class="form-check-label" for="radioButton5">
+                                            Presentation clicker (extra $42.99)
+                                    </div>
+                                    <div class="form-check col-2">
+                                        <input name="ea[Potato Gun]" class="form-check-input" value="99.99" type="checkbox" name="radioButton" id="radioButton6">
+                                        <label class="form-check-label" for="radioButton6">
+                                            Potato Gun (extra $99.99)
+                                    </div>
+                                    <div class="form-check col-2">
+                                        <input name="ea[Yam]" class="form-check-input" value="1.99" type="checkbox" name="radioButton" id="radioButton7">
+                                        <label class="form-check-label" for="radioButton7">
+                                            Yam (extra $1.99)
+                                    </div>
+                                </div>
+
+                                <h4 class="ps-4">Hard Disk</h4>
+                                <div class="row ms-4 mb-3" style="font-size:15px">
+                                    <select name="specs[hd]" style="width: 95%" name="hd" >
+                                        <option class="dropdown-item" value="1 TB,0">1 TB</option>
+                                        <option class="dropdown-item" value="2 TB,44.99">2TB (extra $44.99)</option>
+                                        <option class="dropdown-item" value="4 TB,109.99">4TB (extra $109.99)</option>
+                                        <option class="dropdown-item" value="8 TB,229.99">8TB (extra $229.99)</option>
+                                        <option class="dropdown-item" value="10 TB,279.99">10TB (extra $279.99)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="contactInfo" class="mb-3 border border-dark rounded">
+                            <h3 class="mb-3 p-1 ps-4 border rounded">Contact Information</h3>
+                            <label for="nameInput" class="form-label ps-4">Name</label>
+                            <input name="info[name]" type="name" class="form-control ms-4" style="width:95%" id="nameInput" placeholder="Enter Name" required>
+                            <div class="form-text mb-2 ps-5">Don't worry, your email is safe with us.</div>
+                            <label for="emailInput" class="form-label ps-4">Email address</label>
+                            <input name="info[email]" type="email" class="form-control ms-4 mb-3" style="width:95%" id="emailInput" placeholder="Enter Email" required>
+                        </div>
+                        
+                        <div id="misc" class="mb-3 border border-dark rounded">
+                            <h3 class="mb-3 p-1 ps-4 border rounded">Special Instructions/Comments</h3>
+                            <textarea name="info[comments]" class="ms-3 mb-2" style="width: 95%"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Finalize sale</button>
+                        <button type="submit" class="btn btn-primary btn-danger">Cancel</button>
+                        <div class="mb-5"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+            <span>This page was last edited 07/15/2022</span> <br>
+            <span>This page is not funded and is created for educational purposes</span> <br>
+            <span>Viewing this page means you agree to the most commonly used terms of use and privacy policy, whatever those things may be.</span> <br>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<div class='container-fluid'>
+    <h3>Add New Member</h3>
+    <form action='index.php?mode=addNewMember' method='post'>
+        <table class='table'>
+            <tr>
+                <th>First name:</th>
+                <td>
+                    <input type='text' name="firstName" placeholder='Enter first name' />
+                </td>
+            </tr>
+            <tr>
+                <th>Last name:</th>
+                <td>
+                    <input type='text' name="lastName" placeholder='Enter last name' />
+                </td>
+            </tr>
+            <tr>
+                <th>Phone:</th>
+                <td>
+                    <input type='text' name="phone" placeholder='Enter phone' />
+                </td>
+            </tr>
+            <tr>
+                <th>Member Type:</th>
+                <td>
+                    <select name="memberType">
+                        <option value='Preferred'>Preferred</option>
+                        <option value='Regular' selected='selected'>Regular</option>
+                        <option value='Student'>Student</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <p>
+            <button type='submit' class="btn btn-primary">Add New Member</button>
+        </p>
+    </form>
+</div>

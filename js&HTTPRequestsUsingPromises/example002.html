@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!-- There's a bunch of new stuff that previous examples or notes don't prepare you for,
+	so keep close watch, because you might get overloaded.
+-->
+<html lang="en">
+	<head>
+		<title>CS 382 - Java Script & HTTP Requests Using Promises - Example002</title>
+		<meta charset="utf-8">
+		<meta name="viewpoint" content="width=device-width, intial-scale=1, shrink-to-fit=no">
+	</head>
+
+	<body>
+		<table class='table' >
+			<tr>
+				<th>Length:</th>
+				<td>
+					<input type='text' id='boxLength' value='0'/>
+				</td>
+			</tr>
+			<tr>
+				<th>Width:</th>
+				<td>
+					<input type='text' id='boxWidth' value='0'/>
+				</td>
+			</tr>
+		</table>
+		<p>
+			<!--Notice how the event handler attribute is calling a javascript function.-->
+			<button type='button' class='btn btn-default' value='Calculate area' id='calculate' onclick="displayArea()">Calculate Area</button>
+		</p>
+		<div id="area-box"></div>
+	</body>
+
+	<!--The type describes what type of text is being read. In this case, it's javascript.-->
+	<script type="text/javascript">
+		function displayArea() {
+			/* This method uses template literals */
+			// Read length and width of the box
+			const tmpLength = document.getElementById('boxLength').value;
+			const tmpWidth = document.getElementById('boxWidth').value;
+			/* getData( ) method returns response using promises. 
+				We use the 'then() method of the Promise object to read the response.
+			*/
+
+			console.log("Length: " + tmpLength);
+			console.log("Width: " + tmpWidth);
+			getData(`http://localhost/CS382/js&HTTPRequestsUsingPromises/example002-helper.php?boxLength=${tmpLength}&boxWidth=${tmpWidth}`).then(function(t){
+				console.log(t);
+				if (t && t > 0) {
+				// Display area
+					document.getElementById('area-box').innerHTML = `<p>Area of the Rectangle is ${t}</p>`;
+				}
+			});
+
+			console.log("Done");
+		}
+
+		function getData(url) {
+			/* If the url is defined then this method returns an instance of the Promise object. */
+			if(url) {
+				const task = new Promise( function(resolve, reject) {
+					const req = new XMLHttpRequest();
+					req.open('GET', url);
+					req.send();
+					req.onload = function(){
+						req.status === 200 ? resolve(req.response) : reject(Error(req.statusText));
+					};
+					req.onerror = function(e) {
+						reject(Error(`Network Error: ${e}`));
+					};
+				});
+				return task;
+			}
+			return false;
+		}
+	</script>
+</html>

@@ -1,0 +1,153 @@
+/******************Navigation Links***********************/
+#topnav {
+    height: 200px;
+    background: #1B273D;
+}
+
+#topnav > div {
+    height: 200px;
+    float: left;
+}
+
+#nav_home {
+    height: 200px;
+    float: left;
+    margin-left: 15px;
+}
+
+.nav {
+    height:100px;
+    width: 200px;
+    display:inline;
+    list-style: none;
+}
+
+.nav_text {
+    position:relative;
+    bottom: 0;
+}
+
+.nav_img {
+    height: 100px;
+    width: 100px;
+    margin-top: 100px;
+    position: relative;
+    margin-left: 40px;
+    float: right;
+    bottom: 0;
+}
+
+#nav_other > ul{
+    margin: 0;
+    padding: 0;
+    float: left;
+}
+/***************End of Navigation Links*******************/
+/**************************Footer*************************/
+#footer {
+    width: 99%;
+    padding-left: 1%;
+    background-color: rgb(27, 39, 61);
+    color: #BEB590;
+}
+/************************End of Footer********************/
+/**********************Home Style*************************/
+
+#home_info {
+    width: 49%;
+    float: left;
+    margin-left: 1%;
+}
+
+#home_info > section > span{
+    font-size: 1.5em;
+}
+
+#profile_img {
+    width: 49%;
+    float: right;
+}
+#profile_img > img {
+    width: 600px;
+    height: 750px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.reference {
+    color: #788990;
+}
+/********************End of Home Style********************/
+/**********************Works Style************************/
+
+#main > section {
+    width: 48%;
+    margin-left: 1%;
+    margin-right: 1%;
+    float: left;
+}
+/*******************End of Works Style********************/
+/***********************Bio Style*************************/
+
+#main > div {
+    width: 48%;
+    margin-left: 1%;
+    margin-right: 1%;
+    float: left;
+}
+
+.bio_info{
+    text-align: left;
+    width: 25%;
+}
+
+#bio_info > section > span{
+    font-size: 1.5em;
+}
+/*******************End of Bio Style**********************/
+/********************ContactUs Style**********************/
+/*****************End of ContactUs Style******************/
+/***************Supporting CSS for all pages**************/
+#main {
+    background-color: #2F364F;
+    width: 100%;
+    height: 800px;
+}
+
+#reference_header {
+    margin-top: 50px;
+}
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-radius: 6px;
+    text-align: center;
+}
+
+table > caption {
+    font-size: 1.25em;
+}
+
+tr:nth-child(odd) {
+    background-color: rgb(165, 165, 165);
+}
+
+tr:nth-child(even) {
+    background-color: gray;
+}
+
+hr {
+    background-color: black;
+    color: black;
+    margin: .5%;
+    margin-top: 0;
+    margin-left: 0;
+}
+
+h1, h2 {
+    margin-bottom: 0;
+}
+/********************End of Supporting CSS****************/
